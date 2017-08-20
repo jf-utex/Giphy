@@ -5,7 +5,7 @@ alert("connected");
       var person = $(this).attr("data-person");
       
       var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
-        person + "&api_key=dc6zaTOxFJmzC&limit=10";
+        person + "&api_key=4f140638c6744217b071e2e6b0d01ab8&limit=10";
 
       $.ajax({
           url: queryURL,
