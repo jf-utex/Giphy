@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Giphy</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- Javascript -->
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+	<div class = "container">
+		<div id = "buttons">
+			<button type="button" class="btn btn-info" button data-person="game of thrones">
+		      Game of Thrones
+		    </button>
+				
+			<button type="button" class="btn btn-info" button data-person="seinfeld">
+		      Seinfeld
+		    </button>
+
+			<button type="button" class="btn btn-info" button data-person="friends">
+		      Friends
+		    </button>
+
+		    <button type="button" class="btn btn-info" button data-person="big bang theory">
+		      Big Bang Theory
+		    </button>
+
+		    <button type="button" class="btn btn-info" button data-person="mork and mindy">
+		      Mork and Mindy
+		    </button>
+
+		    <button type="button" class="btn btn-info" button data-person="i dream of jeannie">
+		      I Dream of Jeannie
+		    </button>
+
+  		</div> <!-- button div id end -->
+	</div> <!-- div to end button container -->
+
+	<div class = "container"> <!-- class container to hold new button -->
+		<form id="entertainment-form">
+	      <label for="entertainment-input">What entertains you?</label>
+	      <input type="text" id="entertainment-input"><br>
+
+	      <!-- Button triggers new movie to be added -->
+	      <input id="entertainment" type="submit" value="Add to List">
+	    </form>
+	</div> <!-- end div for container to hold new button -->
+  	
+	<div class = "container"> <!-- container for gifs -->
+	  	<div id="gifs-appear-here">
+		  
+	  	</div> <!-- end gif appearance id -->
+
+			
+	</div>	
+		<!-- Script -->
+		<script type="text/javascript" src="assets/javascript/app.js"></script>
+</body>
+</html>
+
