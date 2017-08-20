@@ -2,63 +2,52 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Giphy</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<title>Giphy API</title>
+
+	<!-- RESET.CSS -->
+    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
 	<!-- Bootstrap -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
 	<!-- Javascript -->
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" rel="stylesheet" type="text/css">
 	<!-- jQuery -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--Personal Style -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-	<div class = "container">
-		<div id = "buttons">
-			<button type="button" class="btn btn-info" button data-person="game of thrones">
-		      Game of Thrones
-		    </button>
+	<div class="container">
+		<div class="row">
+			<div class="jumbotron text-center">
+				<h3> Welcome the the GIPHY API</h3>
+				<p>Select a classic show provided or input your own</p>
+			</div> <!-- closes jumbotron -->
+		</div> <!-- closes row -->
+	</div> <!-- closes jumbotron container -->
+
+	<div class="row button-row">
+		<div class="buttons col-md-12 col-lg-12"></div> <!-- closes buttons class -->
+	</div> <!-- closes button row contains generated buttons by array and user input-->
+
+	<div class= "row content-row">
+		<div class="gifs-display col-md-4 col-lg-8"></div>
+		
+		<div class="add-button-form col-md-4 col-lg-8 text-center">
+			<h4>Add your own classic show</h4>
+			<form id="show-form">
+					<label for ="new-show">What's your classic?</label>
+					<input type="text" id="new-show">
 				
-			<button type="button" class="btn btn-info" button data-person="seinfeld">
-		      Seinfeld
-		    </button>
+				<button type="submit" class="add-classic-btn btn btn-info">Submit</button>
+			</form>
+		</div> <!-- closes div containing the form asking for user input -->
+	</div> <!-- closes content row will display content as gifs are generated -->
+<div class="push"></div>
 
-			<button type="button" class="btn btn-info" button data-person="friends">
-		      Friends
-		    </button>
 
-		    <button type="button" class="btn btn-info" button data-person="big bang theory">
-		      Big Bang Theory
-		    </button>
 
-		    <button type="button" class="btn btn-info" button data-person="mork and mindy">
-		      Mork and Mindy
-		    </button>
 
-		    <button type="button" class="btn btn-info" button data-person="i dream of jeannie">
-		      I Dream of Jeannie
-		    </button>
-
-  		</div> <!-- button div id end -->
-	</div> <!-- div to end button container -->
-
-	<div class = "container"> <!-- class container to hold new button -->
-		<form id="entertainment-form">
-	      <label for="entertainment-input">What entertains you?</label>
-	      <input type="text" id="entertainment-input"><br>
-
-	      <!-- Button triggers new movie to be added -->
-	      <input id="entertainment" type="submit" value="Add to List">
-	    </form>
-	</div> <!-- end div for container to hold new button -->
-  	
-	<div class = "container"> <!-- container for gifs -->
-	  	<div id="gifs-appear-here">
-		  
-	  	</div> <!-- end gif appearance id -->
-			
-	</div>	<!-- closing div to container to hold gifs -->
 		<!-- Script -->
 		<script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
