@@ -14,8 +14,11 @@ var classics = ["MASH 4077", "I Dream of Jeannie", "Gilligan's Island", "The Jet
 
 // Functions
 
+//same as document.ready
 
-// Buttons Function
+// $(function(){  probably in the wrong place - cannot get to run with this function active
+
+    // Buttons Function
 function renderButtons() {
     $(".buttons").empty();
 
@@ -53,7 +56,7 @@ function getGifs() {
     });
 }
 
-
+//grabs gifs from Giphy on click
 
 $(".buttons").on("click", ".classics", function() {
     classics = $(this).attr("data-name");
@@ -62,15 +65,16 @@ $(".buttons").on("click", ".classics", function() {
     getGifs();
 });
 
+//pushes new classic to end of array???????
 
-
-$(".add-classic-btn").on("click", function(e) {
-    e.preventDefault();
-    addNewButton();
+$(".add-classic-btn").on("click", function(event) {
+    event.preventDefault();
     $("#classics").val("");
+    addNewButton();
+    classics.push(classic);
 });
 
-
+//click to animate or still gifs
 
 $(".gifs-display").on("click", ".returnedGif", function() {
     var state = $(this).attr("data-state");
@@ -86,5 +90,6 @@ $(".gifs-display").on("click", ".returnedGif", function() {
 
 //Run Program
 
-
+// Calling the renderButtons function to display the intial buttons
 renderButtons();
+
