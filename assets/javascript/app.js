@@ -15,7 +15,7 @@ var classics = ["MASH 4077", "I Dream of Jeannie", "Gilligan's Island", "The Jet
 // FUNCTIONS
 
 
-// RENDER BUTTONS FUNCTION
+// Buttons Function
 function renderButtons() {
     $(".buttons").empty();
 
@@ -28,7 +28,7 @@ function renderButtons() {
     }
 }
 
-// ADD NEW USER-GENERATED BUTTON
+// New user generated button
 function addNewButton() {
     userButtonVal = $("#new-show").val();
     classics.push(userButtonVal);  //add to end of array?
@@ -40,6 +40,7 @@ function addNewButton() {
     $(".buttons").append(nb);
 }
 
+//Retrieve GIFS
 function getGifs() {
     $.ajax({ url: queryURL, method: 'GET' })
     .done(function(response) {
@@ -48,12 +49,10 @@ function getGifs() {
             $(".gifs-display").append("<div class='img-div text-center'><img src='" + response.data[i].images.fixed_height_still.url + "'class='returnedGif' alt='Classic TV Gif' data-still=" + response.data[i].images.fixed_height_still.url + " data-animate=" + response.data[i].images.fixed_height.url + "><p>Rating: " + response.data[i].rating + "</p></div>");
             $(".returnedGif").attr("data-state", "still");
         }
-        console.log(response);
     });
 }
 
 
-// CLICK LISTENER FOR ADD NEW USER BUTTON
 
 $(".buttons").on("click", ".classics", function() {
     classics = $(this).attr("data-name");
@@ -62,7 +61,7 @@ $(".buttons").on("click", ".classics", function() {
     getGifs();
 });
 
-// CLICK LISTENER FOR ADD NEW USER BUTTON
+
 
 $(".add-classic-btn").on("click", function(e) {
     e.preventDefault();
@@ -70,7 +69,7 @@ $(".add-classic-btn").on("click", function(e) {
     $("#classics").val("");
 });
 
-// CLICK LISTENER FOR FETCHED GIFS TO PAUSE AND PLAY
+
 
 $(".gifs-display").on("click", ".returnedGif", function() {
     var state = $(this).attr("data-state");
