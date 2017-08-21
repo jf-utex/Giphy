@@ -7,12 +7,12 @@ fixedHeightAnimate,
 fixedHeightStill;
 
 
-// ARRAY FOR BUTTONS
+// Button Array
 
 var classics = ["MASH 4077", "I Dream of Jeannie", "Gilligan's Island", "The Jetsons", "Mary Tyler Moore", "The Dukes of Hazard", "Growing Pains", "Facts of Life", "Alf", "Teenage Mutant Ninja Turtles"];
 
 
-// FUNCTIONS
+// Functions
 
 
 // Buttons Function
@@ -47,7 +47,8 @@ function getGifs() {
         for (var i = 0; i < response.data.length; i++) 
         {
             $(".gifs-display").append("<div class='img-div text-center'><img src='" + response.data[i].images.fixed_height_still.url + "'class='returnedGif' alt='Classic TV Gif' data-still=" + response.data[i].images.fixed_height_still.url + " data-animate=" + response.data[i].images.fixed_height.url + "><p>Rating: " + response.data[i].rating + "</p></div>");
-            $(".returnedGif").attr("data-state", "still");
+            $(".returnedGif").attr("data-state", "still"); 
+
         }
     });
 }
