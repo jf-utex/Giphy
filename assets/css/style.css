@@ -3,11 +3,11 @@ body {
   background: #eee;
 }
 
-#animals {
+#emotions {
   width: 70%;
 }
 
-.animal-item {
+.emotion-item {
   float: left;
   padding: 10px;
 }
