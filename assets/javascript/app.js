@@ -1,95 +1,85 @@
+$(document).ready(function() {
+  var emotions = ['happy', 'sad', 'angry', 'joy', 'fright', 'thrilled'];
 
-//Global Variables//
-var userClassic,
-classic,
-queryURL,
-fixedHeightAnimate,
-fixedHeightStill;
+  // function to make buttons and add to page
+  function populateButtons(arrayToUse, classToAdd, areaToAddTo) {
+    $(areaToAddTo).empty();
 
-
-// Button Array
-
-var classics = ["MASH 4077", "I Dream of Jeannie", "Gilligan's Island", "The Jetsons", "Mary Tyler Moore", "The Dukes of Hazard", "Growing Pains", "Facts of Life", "Alf", "Teenage Mutant Ninja Turtles"];
-
-
-// Functions
-
-//same as document.ready
-
-// $(function(){  probably in the wrong place - cannot get to run with this function active
-
-    // Buttons Function
-function renderButtons() {
-    $(".buttons").empty();
-
-    for (var i = 0; i < classics.length; i++) {
-        var b = $("<button>");
-        b.addClass("btn btn-primary classics");
-        b.attr("data-name", classics[i]); // Adds a data-attribute
-        b.text(classics[i]);
-        $(".buttons").append(b);
+    for (var i = 0; i < arrayToUse.length; i++) {
+      var a = $('<button>');
+      a.addClass(classToAdd);
+      a.attr('data-type', arrayToUse[i]);
+      a.text(arrayToUse[i]);
+      $(areaToAddTo).append(a);
     }
-}
+  }
 
-// New user generated button
-function addNewButton() {
-    userButtonVal = $("#new-show").val();
-    classics.push(userButtonVal);  //add to end of array?
-    // renderButtons();
-    var nb = $("<button>");
-    nb.addClass("btn btn-primary new-show");
-    nb.attr("data-name", userButtonVal);
-    nb.text(userButtonVal);
-    $(".buttons").append(nb);
-}
+  $(document).on('click', '.emotion-button', function() {
+    $('#emotions').empty();
+    $('.emotion-button').removeClass('active');
+    $(this).addClass('active');
 
-//Retrieve GIFS
-function getGifs() {
-    $.ajax({ url: queryURL, method: 'GET' })
-    .done(function(response) {
-        for (var i = 0; i < response.data.length; i++) 
-        {
-            $(".gifs-display").append("<div class='img-div text-center'><img src='" + response.data[i].images.fixed_height_still.url + "'class='returnedGif' alt='Classic TV Gif' data-still=" + response.data[i].images.fixed_height_still.url + " data-animate=" + response.data[i].images.fixed_height.url + "><p>Rating: " + response.data[i].rating + "</p></div>");
-            $(".returnedGif").attr("data-state", "still"); 
+    var type = $(this).attr('data-type');
+    var queryURL =
+      'http://api.giphy.com/v1/gifs/search?q=' +
+      type +
+      '&api_key=dc6zaTOxFJmzC&limit=10';
 
-        }
+    $.ajax({
+      url: queryURL,
+      method: 'GET'
+    }).done(function(response) {
+      var results = response.data;
+
+      for (var i = 0; i < results.length; i++) {
+        var emotionDiv = $('<div class="emotion-item">');
+
+        var rating = results[i].rating;
+
+        var p = $('<p>').text('Rating: ' + rating);
+
+        var animated = results[i].images.fixed_height.url;
+        var still = results[i].images.fixed_height_still.url;
+
+        var emotionImage = $('<img>');
+        emotionImage.attr('src', still);
+        emotionImage.attr('data-still', still);
+        emotionImage.attr('data-animate', animated);
+        emotionImage.attr('data-state', 'still');
+        emotionImage.addClass('emotion-image');
+
+        emotionDiv.append(p);
+        emotionDiv.append(emotionImage);
+
+        $('#emotions').append(emotionDiv);
+      }
     });
-}
+  });
 
-//grabs gifs from Giphy on click
+  $(document).on('click', '.emotion-image', function() {
+    var state = $(this).attr('data-state');
 
-$(".buttons").on("click", ".classics", function() {
-    classics = $(this).attr("data-name");
-    queryURL = "http://api.giphy.com/v1/gifs/search?q=" + classics + "&limit=10&rating=pg&api_key=4f140638c6744217b071e2e6b0d01ab8";
-    $(".gifs-display").empty();
-    getGifs();
-});
-
-//pushes new classic to end of array???????
-
-$(".add-classic-btn").on("click", function(event) {
-    event.preventDefault();
-    $("#classics").val("");
-    addNewButton();
-    classics.push(classic);
-});
-
-//click to animate or still gifs
-
-$(".gifs-display").on("click", ".returnedGif", function() {
-    var state = $(this).attr("data-state");
-    if (state === "still") {
-        $(this).attr("src", $(this).data("animate"));
-        $(this).attr("data-state", "animate");
+    if (state === 'still') {
+      $(this).attr('src', $(this).attr('data-animate'));
+      $(this).attr('data-state', 'animate');
     } else {
-        $(this).attr("src", $(this).data("still"));
-        $(this).attr("data-state", "still");
+      $(this).attr('src', $(this).attr('data-still'));
+      $(this).attr('data-state', 'still');
     }
+  });
+
+  $('#add-emotion').on('click', function(event) {
+    event.preventDefault();
+    var newEmotion = $('input')
+      .eq(0)
+      .val();
+
+    if (newEmotion.length > 2) {
+      emotions.push(newEmotion);
+    }
+
+    populateButtons(emotions, 'emotion-button', '#emotion-buttons');
+  });
+
+  populateButtons(emotions, 'emotion-button', '#emotion-buttons');
 });
-
-
-//Run Program
-
-// Calling the renderButtons function to display the intial buttons
-renderButtons();
-

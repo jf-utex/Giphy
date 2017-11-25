@@ -1,63 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Giphy API</title>
 
-	<!-- RESET.CSS -->
-    <link href="assets/css/reset.css" rel="stylesheet" type="text/css">
-	<!-- Bootstrap -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
-	<!-- Javascript -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" rel="stylesheet" type="text/css">
-	<!-- jQuery -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!--Personal Style -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="jumbotron text-center">
-				<h3> Welcome the the GIPHY API</h3>
-				<p>Select a classic show provided or input your own</p>
-			</div> <!-- closes jumbotron -->
-		</div> <!-- closes row -->
-	</div> <!-- closes jumbotron container -->
-<div class="panel panel-primary">
-  <div class="panel-body">
-    
-	<div class="row button-row">
-		<div class="buttons col-md-12 col-lg-12"></div> <!-- closes buttons class -->
-	</div> <!-- closes button row contains generated buttons by array and user input-->
-	<div class="add-button-form col-md-4 col-lg-8 text-center">
-				<h4>Add your own classic show</h4>
-				<form id="show-form">
-						<label for ="new-show">What's your classic?</label>
-						<input type="text" id="new-show">
-					
-					<button type="submit" class="add-classic-btn btn btn-info">Submit</button>
-				</form>
-	</div> <!-- closes div containing the form asking for user input -->
- </div>
-</div>
 
-<div class="panel panel-primary">
-  <div class="panel-body">
-		<div class= "row content-row">
-			<div class="gifs-display">
-				<div class="column-md-4 column-md-4 col-md-4">
-			</div>
-		</div> <!-- closes content row will display content as gifs are generated -->
-	</div> <!-- closes panel-body for GIF display -->
-</div> <!-- closes panel-primary for GIF display -->
+	<div id="emotion-buttons"></div>
 
-</div>
+	<form id="emotion-form">
+    <label for="emotion-input">Add an emotion</label>
+    <input type="text" id="emotion-input"><br>
 
+    <input id="add-emotion" type="submit" value="Submit">
+  </form>
 
-		<!-- Script -->
-		<script type="text/javascript" src="assets/javascript/app.js"></script>
+	<div id="emotions"></div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
-</html>
 
+</html>
