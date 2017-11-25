@@ -1,4 +1,7 @@
 body {
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 60px;
   font: 18px arial, sans-serif;
   background: #eee;
 }
